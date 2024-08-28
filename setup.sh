@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-###Sets up python packages in for devcontainer.json
-
+#install the virtualenv tool
+pip install virtualenv
 #create a virtualenv
 virtualenv ~/.venv
 #source virtualenv

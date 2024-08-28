@@ -1,38 +1,61 @@
+# Roulette Simulation
 
+This repository contains a Python script for simulating a roulette wheel. The script allows you to spin a roulette wheel, place bets on colors and numbers, and calculate potential winnings. It demonstrates the concept of the law of large numbers and the negative expected value of roulette.
 
-## Tasks
+## Features
 
-A.  Simulate a career earnings vs investor portfolio
+- Simulate spins of a roulette wheel with 38 slots (including 0 and 00).
+- Bet on colors (red, black, green) or specific numbers.
+- Generate reports on the outcomes of the spins.
+- Calculate total winnings based on bets.
 
-1.  Run the `./startup.py` simulator and explore how each command works.
+## Requirements
+
+- Python 3.x
+- Pandas
+- Click
+
+You can install the required packages using:
 
 ```bash
-Usage: startup_game.py [OPTIONS] COMMAND [ARGS]...
+./setup.sh
+```
+## Usage
 
-  Startup Game Simulator
+### Spin the Roulette Wheel
 
-Options:
-  --help  Show this message and exit.
+To simulate spins of the roulette wheel, use the `spin` command. This command lets you specify the number of spins, the amount to bet, and whether you want to bet on a color or a number.
 
-Commands:
-  sanity             Sanity test the simulation with a small number of...
-  simulate           Simulate a startup career
-  simulate_multiple  Simulate a startup career for multiple people
-  vcportfolio        Simulate a venture capitalist investing in a...
+#### Command Syntax
+
+```bash
+python roulette.py spin --count <number_of_spins> --bet <bet_amount> [--color <color>] [--number_bet <number>]
 ```
 
-2.  Create your own VC portfolio using `vcportfolio` and startup career using `simulate_multiple`.
-* Reflection question:  What did you learn about the payoff for a regular employee vs. an investor?  
-* Reflection question:  Why are simulations important first modeling steps?
+* --count (default: 1): Total number of spins.
+* --bet (default: 1): Amount of money to bet on each spin.
+* --color (optional): Color to bet on. Choices are "red", "black", "green".
+* --number_bet (optional): Specific number to bet on (0 to 36).
 
-B. Determine if roulette wheels have patterns that a simulation can determine by running the following command
+### Example
+Spin the wheel 10 times, betting $1 on red:
 
-`./roulette.py spin --count 10 --color red --bet 1`
+```bash
+Copy code
+python roulette.py spin --count 10 --color red --bet 1
+```
 
-* Reflection question:  Is it is wise to bet a large bet on red if you see the roulette wheel hit 10 black numbers in a row?
-* Reflection question:  Is there any behavior you could add to the roulette simulator that would improve it?  If so do it and build a portfolio project that shows your enhancement.
+## Code Overview
+* build_wheel(): Creates a DataFrame representing the roulette wheel with slots, colors, and probabilities.
+* spin_wheel(wheel): Simulates a single spin of the wheel.
+* simulate_spins(wheel, spins): Simulates multiple spins and returns the results.
+* generate_report(results, full_report=False): Generates a report on the simulation results.
+* calculate_winnings(results, bet, count, color=None, number=None): Calculates the winnings based on bets.
+* print_wheel(results): Prints the results of the simulation with color styling.
+* spin_option(count, bet, number_bet, color): CLI command to spin the wheel and handle bets.
 
-
-### References
-
-* [Coursera-MLOps-C2-lab3-probability-simulations](https://github.com/nogibjj/Coursera-MLOps-C2-lab3-probability-simulations)
+## Future Improvements
+* Support for betting on multiple numbers and colors.
+* Different bets on different spins.
+* Interactive Jupyter notebook to show historical results.
+* Web interface using Streamlit or Gradio.

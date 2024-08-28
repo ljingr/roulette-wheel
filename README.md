@@ -41,7 +41,6 @@ python roulette.py spin --count <number_of_spins> --bet <bet_amount> [--color <c
 Spin the wheel 10 times, betting $1 on red:
 
 ```bash
-Copy code
 python roulette.py spin --count 10 --color red --bet 1
 ```
 
